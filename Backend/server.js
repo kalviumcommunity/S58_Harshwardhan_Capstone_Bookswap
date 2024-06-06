@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db');
+const Joi = require('joi')
 require("dotenv").config();
 
 const app = express();
@@ -9,6 +10,12 @@ const booksModel = require("./model/books.model");
 app.use(express.json());
 
 connectDB();
+
+//validation schema with joi
+const bookSchema = Joi.object({
+  name: Joi.string().required(),
+  image: Joi.string().uri().required(),
+})
 
 //Get book images endpoint
 app.get("/Books/Get", async (req, res) => {
@@ -23,6 +30,12 @@ app.get("/Books/Get", async (req, res) => {
 
 //Post book images endpoint
 app.post("/Books/Post", async (req, res) => {
+
+  const { error } = bookSchema.validate(req.body);
+  if (error) {
+    return res.status(400).send(error.details[0].message);
+  }
+
   try {
     let book = new booksModel(req.body);
     let result = await book.save();
