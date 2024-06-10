@@ -46,6 +46,24 @@ app.post("/Books/Post", async (req, res) => {
   }
 });
 
+// Update book images endpoint
+app.put("/Books/Update/:id", async (req, res) => {
+  const { error } = bookSchema.validate(req.body);
+  if (error) {
+    return res.status(400).send(error.details[0].message);
+  }
+  try {
+    const updatedBook = await booksModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updatedBook) {
+      return res.status(404).send({ msg: "Book not found" });
+    }
+    res.send({ msg: "Book updated successfully", data: updatedBook });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
