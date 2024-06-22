@@ -29,7 +29,6 @@ app.get("/Books/Get", async (req, res) => {
   }
 });
 
-
 //Get book by id endpoint
 app.get("/Books/Get/:id", async (req, res) => {
   try {

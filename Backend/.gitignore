@@ -1,4 +1,5 @@
-package-lock.json
-node_modules
+node_modules/
+Backend/package-lock.json
+client/package-lock.json
 .env
 # .gitignore
