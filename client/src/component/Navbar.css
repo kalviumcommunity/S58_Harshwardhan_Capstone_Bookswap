@@ -1,0 +1,100 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 20px 10px 100px;
+    background: linear-gradient(to bottom, #603A00 0%, #AA6F16 50%, #FDECC3 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    font-size: larger;
+  }
+  .logo img {
+    height: 100px;
+    width: 120px;
+  }
+  
+  .menu{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 45%;
+    height: 100%;
+  }
+  .menu ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu li {
+    margin-left: 20px;
+  }
+  
+  .menu a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.5s ease;
+    font-weight: bold;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-shadow: 0px 1px 3px rgb(0, 0, 0);
+  }
+  
+  .menu a:hover {
+    color: #cecece;
+  }
+  
+  #login, #signup{
+    padding: 9px 15px;
+    background-color: black;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 80%;
+    border-radius: 20px;
+    height: 40px;
+  }
+  
+  #login:hover, #signup:hover {
+    background-color: white;
+    color: black;
+  }
+
+  .hamburger-menu {
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .hamburger-menu div {
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    margin: 5px 0;
+  }
+
+  .side-menu {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background: white;
+    top: 0;
+    right: -250px;
+    transition: right 0.3s ease;
+    background: linear-gradient(to bottom, #CD9C53 0%, #CDAD76 50%, #FFFFFF 100%);
+}
+
+.side-menu.open {
+    right: 0;
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}

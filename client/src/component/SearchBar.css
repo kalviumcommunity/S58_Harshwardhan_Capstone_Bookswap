@@ -1,0 +1,36 @@
+#main-div{
+    height: 80vh;
+}
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+    padding: 5px 10px;
+    max-width: 450px;
+    margin: auto;
+    background-color: white;
+    margin-top: 180px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: 40px;
+  }
+  
+  /* Style for the input field */
+  .search-bar-container input[type="text"] {
+    border: none;
+    outline: none;
+    padding: 5px;
+    flex-grow: 1;
+    box-shadow: none;
+  }
+  
+  /* Style for the search icon */
+  .search-bar-container img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+button{
+    background-color: rgba(0, 0, 0, 0);
+}
