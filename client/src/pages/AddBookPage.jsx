@@ -14,7 +14,6 @@ function AddBookPage() {
             <input type="text" id="subject" name="Subject" required placeholder='Subject or Stream'/>
             <input type="text" id="days" name="days" required placeholder='Days of Use'/>
             <input type="text" id="description" name="description" required placeholder='Description and Condition of book'/>
-            {/* I want to add a iamge file here */}
             <div id='file-upload'>
               <p>Upload Image</p>
               <p>Make sure the image size is not greater then 2MB</p>

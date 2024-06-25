@@ -22,7 +22,7 @@ nav {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: auto; /* Adjusted for potentially more form elements */
+    height: auto;
     width: 35%;
     max-width: 400px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
@@ -52,7 +52,6 @@ input[type="text"], input[type="file"] {
 #file-upload {
     margin: 20px 0;
     padding: 10px;
-    /* border: 2px dashed #603A00; */
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     border-radius: 10px;
     background-color: #FDECC3;

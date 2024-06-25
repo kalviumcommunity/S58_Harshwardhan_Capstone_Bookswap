@@ -9,17 +9,12 @@ nav {
     color: #fff;
     font-size: larger;
   }
-  
-  .logo{
-    /* border: 2px solid red; */
-  }
   .logo img {
     height: 100px;
     width: 120px;
   }
   
   .menu{
-    /* border: 2px solid red; */
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -27,7 +22,6 @@ nav {
     height: 100%;
   }
   .menu ul {
-    /* border: 2px solid red; */
     list-style: none;
     display: flex;
     align-items: center;
@@ -53,7 +47,6 @@ nav {
   }
   
   #login, #signup{
-    /* margin-left: 10px; */
     padding: 9px 15px;
     background-color: black;
     color: #fff;
@@ -88,17 +81,16 @@ nav {
     height: 100%;
     background: white;
     top: 0;
-    right: -250px; /* Start hidden */
+    right: -250px;
     transition: right 0.3s ease;
     background: linear-gradient(to bottom, #CD9C53 0%, #CDAD76 50%, #FFFFFF 100%);
 }
 
 .side-menu.open {
-    right: 0; /* Slide in */
+    right: 0;
 }
 
 .close-icon {
-  /* border: 2px solid red; */
   position: absolute;
   top: 10px;
   right: 20px;
