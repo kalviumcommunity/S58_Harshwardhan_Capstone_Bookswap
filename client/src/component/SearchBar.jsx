@@ -11,6 +11,14 @@ function SearchBar() {
         </div>
         <div className='category'>
             {/* i have to add something */}
+            <button className='category-button'>Engineering</button>
+            <button className='category-button'>Hotel Management</button>
+            <button className='category-button'>MBBS</button>
+            <button className='category-button'>LLB</button>
+            <button className='category-button'>Pharmaceutical</button>
+            <button className='category-button'>Journalism</button>
+            <button className='category-button'>commerce</button>
+          
         </div>
     </div>
     

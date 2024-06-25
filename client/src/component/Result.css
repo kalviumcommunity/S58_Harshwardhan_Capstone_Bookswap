@@ -1,0 +1,41 @@
+.eachbook {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjusted from auto to minmax for better control */
+    gap: 20px;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .eachbook > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .eachbook img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .eachbook h4 {
+    margin: 10px 0 5px;
+    text-align: center;
+  }
+  
+  .eachbook p {
+    text-align: center;
+    color: #666;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .eachbook {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Reduced size for smaller screens */
+    }
+  }

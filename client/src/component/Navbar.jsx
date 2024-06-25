@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import mainLogo from '../assets/mainlogo.png';
 import './Navbar.css';
+import { Link } from 'react-router-dom'
 
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,13 +18,13 @@ function Navbar() {
                 </div>
                 <div className="menu">
                     <ul>
-                        <li><a href="#">Home</a></li>
+                        <Link to="/"><li><a href="#">Home</a></li></Link>
                         <li><a href="#">Books</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Sell</a></li>
+                        <Link to="/aboutpage"><li><a href="#">About</a></li></Link>
+                        <Link to="/add"><li><a href="#">Sell</a></li></Link>
                     </ul>
-                    <button id='login'>Login</button>
-                    <button id='signup'>SignUp</button>
+                    <Link to="/login"><button id='login'>Login</button></Link>
+                    <Link to="/signup"><button id='signup'>SignUp</button></Link>
                     <div className="hamburger-menu" onClick={toggleMenu}>
                         <div></div>
                         <div></div>
