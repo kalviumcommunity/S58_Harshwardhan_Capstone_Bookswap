@@ -64,3 +64,40 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #AA6F16;
 }
+
+.password-container {
+    /* border: 2px solid red; */
+    width: 80%;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .password-container input {
+    width: 100%;
+    padding-right: 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 20px;
+  }
+  
+  .toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    width: 25px;
+    height: 20px;
+  }
+
+  .password-error {
+    color: #D8000C;
+    background-color: #FFD2D2;
+    border: 1px solid #D8000C;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    font-size: 13px;
+    text-align: center;
+  }
