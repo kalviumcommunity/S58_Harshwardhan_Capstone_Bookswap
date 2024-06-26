@@ -1,16 +1,13 @@
-import { useState } from 'react'
-import './App.css'
-import MainPage from './pages/MainPage'
-import LoginPage from './pages/LoginPage'
-import SignUp from './pages/SignUp'
-import AddBookPage from './pages/AddBookPage'
+  import { useState } from 'react'
+  import './App.css'
+  import AllRoutes from './pages/AllRoutes'
 
-function App() {
-  const [count, setCount] = useState(0)
+  function App() {
+    const [count, setCount] = useState(0)
 
-  return (
-    <MainPage/>
-  )
-}
+    return (
+      <AllRoutes/>
+    )
+  }
 
-export default App
+  export default App

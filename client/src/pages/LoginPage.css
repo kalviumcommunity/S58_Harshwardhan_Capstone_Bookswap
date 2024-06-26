@@ -65,3 +65,24 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #AA6F16;
 }
+
+
+#go_to_signup {
+    color: red; /* Change text color to red for visibility */
+    margin-top: 20px; /* Add some space above the message */
+    text-align: center; /* Center the text and button */
+    font-size: 16px; /* Increase font size for better readability */
+  }
+  #go_to_signup > button {
+    background-color: #a57701; /* Green background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 15px 32px; /* Padding for size */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline from links */
+    display: inline-block; /* Align with other inline elements */
+    font-size: 16px; /* Text size */
+    margin: 4px 2px; /* Margin for spacing */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 20px; /* Rounded corners */
+  }

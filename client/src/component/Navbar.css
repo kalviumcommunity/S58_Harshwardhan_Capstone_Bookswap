@@ -46,7 +46,7 @@ nav {
     color: #cecece;
   }
   
-  #login, #signup{
+  #login, #signup, #logout{
     padding: 9px 15px;
     background-color: black;
     color: #fff;
@@ -58,7 +58,7 @@ nav {
     height: 40px;
   }
   
-  #login:hover, #signup:hover {
+  #login:hover, #signup:hover,#logout:hover{
     background-color: white;
     color: black;
   }
