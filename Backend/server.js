@@ -1,6 +1,7 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const Joi = require('joi')
+const cors = require('cors');
 require("dotenv").config();
 
 const app = express();
@@ -9,6 +10,7 @@ const booksModel = require("./model/books.model");
 const usersModel = require("./model/user.model");
 
 app.use(express.json());
+app.use(cors());
 
 connectDB();
 
@@ -51,7 +53,6 @@ app.post("/Books/Post", async (req, res) => {
   if (error) {
     return res.status(400).send(error.details[0].message);
   }
-
   const username = req.cookies.username;
   if (!username) {
     return res.status(403).send({ msg: "No username found in cookies. Please login." });
@@ -105,7 +106,7 @@ app.delete("/Books/Delete/:id", async (req, res) => {
 // Sign up endpoint
 app.post("/Users/SignUp", async (req, res) => {
   const userSchema = Joi.object({
-    name: Joi.string().required(),
+    username: Joi.string().required(),
     email: Joi.string().email().required(),
     password: Joi.string().min(6).required(),
   });
@@ -121,7 +122,7 @@ app.post("/Users/SignUp", async (req, res) => {
     }
     user = new usersModel(req.body);
     await user.save();
-    res.send({ msg: "User created successfully", user: { id: user._id, name: user.name, email: user.email } });
+    res.send({ msg: "User created successfully", user: { id: user._id, username: user.username, email: user.email, password: user.password } });
   } catch (error) {
     console.log(error);
     res.status(500).send(error);
@@ -129,27 +130,37 @@ app.post("/Users/SignUp", async (req, res) => {
 });
 
 // Login endpoint
-app.get("/Users/Login", async (req, res) => {
-  const { name, password } = req.query;
+app.post('/login', async (req, res) => {
+  const { error } = Joi.object({
+    username: Joi.string().required(),
+    password: Joi.string().required(),
+  }).validate(req.body);
+
+  if (error) {
+    console.log('Validation error:', error.details[0].message);
+    return res.status(400).send(error.details[0].message);
+  }
+
   try {
-    const user = await usersModel.findOne({ name: name });
-    if (!user) {
-      return res.status(404).send({ msg: "User not found" });
+    console.log('Login request received for username:', req.body.username);
+    const user = await usersModel.findOne({ username: req.body.username, password: req.body.password });
+
+    if (user) {
+      console.log('User found:', user.username);
+      res.cookie('username', user.username, { maxAge: 900000, httpOnly: true });
+      res.status(200).send({ msg: 'Login successful' });
+    } else {
+      console.log('Invalid username or password');
+      res.status(401).send('Invalid username or password');
     }
-    if (user.password !== password) {
-      return res.status(401).send({ msg: "Invalid password" });
-    }
-    res.cookie('username', user.name, { httpOnly: true });
-    res.send({ msg: "Logged in successfully", user: { id: user._id, name: user.name, email: user.email } });
   } catch (error) {
-    console.log(error);
-    res.status(500).send(error);
+    console.error('Error during login:', error);
+    res.status(500).send('An error occurred while logging in');
   }
 });
-
 // Logout endpoint
 app.get("/Users/Logout", (req, res) => {
-  res.clearCookie('username');
+  res.clearCookie('username', { path: '/' });
   res.send({ msg: "Logged out successfully" });
 });
 
