@@ -22,3 +22,5 @@ Low-fidelity prototype: creating a low-fidelity prototype.
 
 ##### Security Enhancement
 - JWT Implementation: Integrate JSON Web Tokens to secure user authentication and authorization.
+
+A deployed frontend link:- https://667b13239da3d057aff59e75--wonderful-piroshki-a68378.netlify.app/

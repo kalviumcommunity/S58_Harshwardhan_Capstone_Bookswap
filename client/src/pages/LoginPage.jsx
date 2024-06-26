@@ -12,7 +12,6 @@ function LoginPage() {
   const [userDoesNotExist, setUserDoesNotExist] = useState(false);
 
   const navigate = useNavigate();
-
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -29,7 +28,7 @@ function LoginPage() {
 
       if (loginResponse.status === 200) {
         console.log('Login successful for username:', username);
-        document.cookie = `username=${username}; max-age=900000; path=/; HttpOnly; Secure`; 
+        document.cookie = `username=${username}; max-age=900000; path=/`;
         localStorage.setItem('isLoggedIn', 'true');
         navigate('/');
       } else {
