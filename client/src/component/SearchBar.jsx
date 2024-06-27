@@ -18,7 +18,6 @@ function SearchBar() {
             <button className='category-button'>Pharmaceutical</button>
             <button className='category-button'>Journalism</button>
             <button className='category-button'>commerce</button>
-          
         </div>
     </div>
     
