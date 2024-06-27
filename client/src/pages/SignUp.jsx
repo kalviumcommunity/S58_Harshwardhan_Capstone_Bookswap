@@ -57,6 +57,7 @@ function SignUp() {
       });
       const data = await response.json();
       if (response.ok) {
+
         // Handle success response
         navigate('/');
         console.log("SignUp successful");
@@ -64,9 +65,11 @@ function SignUp() {
         // User already exists, show appropriate message
         setSignupError('User already exists. Please log in.');
       } else {
+
         // Handle other server errors or invalid responses
         console.error("SignUp failed");
         setSignupError('Sign up failed. Please try again.');
+
       }
     } catch (error) {
       // Handle network errors
@@ -75,25 +78,31 @@ function SignUp() {
     }
   };
 
+
   return (
     <>
       <nav></nav>
       <div id='signup-div'>
           <form onSubmit={handleSubmit}>
+
               <h1>SignUp Form</h1>
               <input type="text" id="name" name="name" required placeholder='Username' value={name} onChange={(e) => setName(e.target.value)}/>
               <input type="email" id="email" name="email" required placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}/>
               <div className="password-container">
+
                 <input type={passwordVisible ? "text" : "password"} id="password" name="password" value={password} onChange={handlePasswordChange} required placeholder='Password'/>
                 <img src={passwordVisible ? EyeSlash : Eye} alt="Toggle Visibility" onClick={togglePasswordVisibility} className="toggle-password"/>
               </div>
+              
               <div className="password-container">
                 <input type={confPasswordVisible ? "text" : "password"} id="conf-password" name="conf-password" value={confPassword} onChange={handleConfPasswordChange} required placeholder='Confirm Password'/>
                 <img src={confPasswordVisible ? EyeSlash : Eye} alt="Toggle Visibility" onClick={toggleConfPasswordVisibility} className="toggle-password"/>
               </div>
+
               {passwordError && <div className="password-error">{passwordError}</div>}
               {signupError && <div className="signup-error">{signupError} <Link to="/login">Go to Login</Link></div>}
               <button type="submit">SignUp</button>
+
           </form>
       </div>
     </>

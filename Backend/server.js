@@ -105,27 +105,32 @@ app.delete("/Books/Delete/:id", async (req, res) => {
 
 // Sign up endpoint
 app.post("/Users/SignUp", async (req, res) => {
+
   const userSchema = Joi.object({
     username: Joi.string().required(),
     email: Joi.string().email().required(),
     password: Joi.string().min(6).required(),
   });
   const { error } = userSchema.validate(req.body);
+
   if (error) {
     return res.status(400).send(error.details[0].message);
   }
+
 
   try {
     let user = await usersModel.findOne({ email: req.body.email });
     if (user) {
       return res.status(400).send({ msg: "User already exists" });
     }
+
     user = new usersModel(req.body);
     await user.save();
     res.send({ msg: "User created successfully", user: { id: user._id, username: user.username, email: user.email, password: user.password } });
   } catch (error) {
     console.log(error);
     res.status(500).send(error);
+
   }
 });
 
@@ -136,10 +141,12 @@ app.post('/login', async (req, res) => {
     password: Joi.string().required(),
   }).validate(req.body);
 
+
   if (error) {
     console.log('Validation error:', error.details[0].message);
     return res.status(400).send(error.details[0].message);
   }
+
 
   try {
     console.log('Login request received for username:', req.body.username);
@@ -150,21 +157,25 @@ app.post('/login', async (req, res) => {
       res.cookie('username', user.username, { maxAge: 900000, httpOnly: true });
       res.status(200).send({ msg: 'Login successful' });
     } else {
+
       console.log('Invalid username or password');
       res.status(401).send('Invalid username or password');
     }
   } catch (error) {
     console.error('Error during login:', error);
     res.status(500).send('An error occurred while logging in');
+
   }
 });
 // Logout endpoint
 app.get("/Users/Logout", (req, res) => {
   res.clearCookie('username', { path: '/' });
   res.send({ msg: "Logged out successfully" });
+
 });
 
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
+  
 });

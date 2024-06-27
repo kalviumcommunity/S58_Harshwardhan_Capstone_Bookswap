@@ -14,6 +14,7 @@ function LoginPage() {
   const navigate = useNavigate();
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
+
   };
 
   const handleSubmit = async (event) => {
@@ -22,6 +23,7 @@ function LoginPage() {
     try {
       console.log('Attempting login for username:', username);
       const loginResponse = await axios.post('http://localhost:3000/login', {
+
         username,
         password,
       });
@@ -30,6 +32,7 @@ function LoginPage() {
         console.log('Login successful for username:', username);
         document.cookie = `username=${username}; max-age=900000; path=/`;
         localStorage.setItem('isLoggedIn', 'true');
+        
         navigate('/');
       } else {
         console.log('Login failed with status:', loginResponse.status);
@@ -43,6 +46,7 @@ function LoginPage() {
       }
       setUserDoesNotExist(true);
     }
+
   };
 
   return (
@@ -50,6 +54,7 @@ function LoginPage() {
       <nav>
       </nav>
       <div id='login-div'>
+
         <form onSubmit={handleSubmit}>
           <h1>Login Form</h1>
           <input type="text" id="name" name="name" required placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} />
@@ -58,13 +63,16 @@ function LoginPage() {
             <img src={passwordVisible ? EyeSlash : Eye} alt="Toggle Visibility" onClick={togglePasswordVisibility} className="toggle-password" />
           </div>
           <button type="submit">Login</button>
+
         </form>
       </div>
       {userDoesNotExist && (
+        
         <div id='go_to_signup'>
           <p>Invalid username or password. Please try again or sign up if you don't have an account.</p>
           <button onClick={() => navigate('/signup')}>Go to Sign Up</button>
         </div>
+        
       )}
     </>
   );
